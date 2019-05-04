@@ -1,40 +1,19 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import React, {Component} from 'react';
+import {initStore} from './redux/store';
+import {Provider} from 'react-redux';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+import App from './App.container';
+
+const store = initStore();
 
 class NoteTaker extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native :))!
-        </Text>
-      </View>
-    );
-  }
+	render () {
+		return (
+			<Provider store={store}>
+				<App />
+			</Provider>
+		);
+	}
 }
-
 
 export default NoteTaker;
